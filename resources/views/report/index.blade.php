@@ -23,12 +23,16 @@
         <button class="create-report">
             Создать заявление
         </button>
-        <div class="cards">
-            <div class="card">
-                <div class="date">
-
-                </div>
+        <div class="cards"></div>
+            @foreach ($reports as $report)
+            <div class="card" style="border: 1px solid black; border-radius: 10px; padding: 5px; width: 300px; ">
+                <p>Номер авто:{{ $report->number}}</p>
+                <p>Описание нарушения:{{ $report->description}}</p>
             </div>
+            
+            @endforeach 
+        
+            
         </div>
 
     </main>
