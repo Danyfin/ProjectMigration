@@ -21,5 +21,6 @@ Route::get('/reports/create', function (){
 
 Route::get('/reports', [ReportController::class,'index'])->name('report.index');
 
+Route::delete('/reports/{report}', [ReportController::class,'destroy'])->name('reports.destroy');
 
 
