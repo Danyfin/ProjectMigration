@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
+            $table->string('number')notNullValue();
             $table->text('description');
             $table->timestamps();
             $table->foreignId('user_id')
@@ -26,7 +26,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-                
+
             $table->softDeletes();
 
         });

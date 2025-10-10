@@ -7,10 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reports', function () {
-    return view('report.index');
-});
-
 Route::get('/reports', function (){
     return view('report.index');
 })->name('reports.index');
@@ -23,4 +19,5 @@ Route::get('/reports', [ReportController::class,'index'])->name('report.index');
 
 Route::delete('/reports/{report}', [ReportController::class,'destroy'])->name('reports.destroy');
 
+Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
 

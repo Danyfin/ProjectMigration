@@ -20,9 +20,9 @@
         </div>
     </header>
     <main>
-        <button class="create-report">
+        <a href="/reports/create" class="create-report">
             Создать заявление
-        </button>
+        </a>    
         <div class="cards"></div>
             @foreach ($reports as $report)
             <div class="card" style="border: 1px solid black; border-radius: 10px; padding: 5px; width: 300px; ">
