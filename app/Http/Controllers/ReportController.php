@@ -27,5 +27,11 @@ class ReportController extends Controller
         return redirect()->back();
     }
 
+    public function update(Report $report)
+    {
+        return view('reports.edit',compact('report'));
+    }
+    
+
 }
 
