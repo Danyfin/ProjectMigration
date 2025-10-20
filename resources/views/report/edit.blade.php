@@ -17,11 +17,11 @@
         </div>
     </header>
     <main>   
-    <form action="{{ route('reports.store') }}" method="POST">
+    <form action="{{ route('reports.update', $report->id) }}" method="POST">
         @csrf    
-        @method('put')
+        @method('PUT')
         <input type="text" name="number" placeholder="Номер авто" required value="{{ $report->number}}">
-        <textarea name="description" placeholder="Описание нарушения" required value="{{ $report->description}}"></textarea>
+        <textarea name="description" placeholder="Описание нарушения" required>{{$report->description}}</textarea>
         <input type="submit" value="Обновить">
     </form>
 
