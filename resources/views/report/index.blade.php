@@ -15,7 +15,6 @@
             <h1 class="logo">НАРУШЕНИЙ<span>.НЕТ</span></h1>
             <div class="account">
                 <p class="name"></p>
-                <button>выйти</button>
             </div>
         </div>
     </header>
@@ -25,7 +24,6 @@
         </a>    
         <div class="cards"></div>
             @foreach ($reports as $report)
-            <a href="{{ route('reports.edit', $report->id) }}">
                 <div class="card" style="border: 1px solid black; border-radius: 10px; padding: 5px; width: 300px; ">
                     <form action="{{route('reports.destroy', $report->id)}}" method="POST">
                         @method('delete')
@@ -33,10 +31,10 @@
                         <p>Номер авто:{{ $report->number}}</p>
                         <p>Описание нарушения:{{ $report->description}}</p>
                         <input type="submit" value="Удалить">
+                        <a href="{{ route('reports.edit', $report->id) }}">Редактировать</a>
                     </form>
                 </div>
                 @csrf
-            </a>
             @endforeach 
         
             

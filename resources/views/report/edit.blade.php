@@ -12,7 +12,7 @@
             <h1 class="logo">НАРУШЕНИЙ<span>.НЕТ</span></h1>
             <div class="account">
                 <p class="name"></p>
-                <button>выйти</button>
+                <a href="{{ route('report.index') }}">выйти</a>
             </div>
         </div>
     </header>

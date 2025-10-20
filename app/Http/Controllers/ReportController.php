@@ -39,7 +39,7 @@ class ReportController extends Controller
         ]);
 
         $report->update($data);
-        return redirect()->back();
+        return redirect()->route('report.index');
     }
 
 }
