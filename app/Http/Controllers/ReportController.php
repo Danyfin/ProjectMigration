@@ -27,11 +27,20 @@ class ReportController extends Controller
         return redirect()->back();
     }
 
-    public function update(Report $report)
+    public function edit(Report $report)
     {
-        return view('reports.edit',compact('report'));
+        return view('report.edit',compact('report'));
     }
     
+    public function update(Request $request, Report $report){
+        $data = $request -> validate([
+            'number' => 'string',
+            'description' => 'string',
+        ]);
+
+        $report->update($data);
+        return redirect()->back();
+    }
 
 }
 

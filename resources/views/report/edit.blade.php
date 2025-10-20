@@ -19,8 +19,9 @@
     <main>   
     <form action="{{ route('reports.store') }}" method="POST">
         @csrf    
-        <input type="text" name="number" placeholder="Номер авто" required>
-        <textarea name="description" placeholder="Описание нарушения" required></textarea>
+        @method('put')
+        <input type="text" name="number" placeholder="Номер авто" required value="{{ $report->number}}">
+        <textarea name="description" placeholder="Описание нарушения" required value="{{ $report->description}}"></textarea>
         <input type="submit" value="Обновить">
     </form>
 

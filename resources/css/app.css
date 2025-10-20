@@ -10,3 +10,8 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+.form{
+    display: flex;
+    flex-direction: column;
+}
+

@@ -25,16 +25,18 @@
         </a>    
         <div class="cards"></div>
             @foreach ($reports as $report)
-            <div class="card" style="border: 1px solid black; border-radius: 10px; padding: 5px; width: 300px; ">
-                <form action="{{route('reports.destroy', $report->id)}}" method="POST">
-                    @method('delete')
-                    @csrf
-                    <p>Номер авто:{{ $report->number}}</p>
-                    <p>Описание нарушения:{{ $report->description}}</p>
-                    <input type="submit" value="Удалить">
-                </form>
-            </div>
-            
+            <a href="{{ route('reports.edit', $report->id) }}">
+                <div class="card" style="border: 1px solid black; border-radius: 10px; padding: 5px; width: 300px; ">
+                    <form action="{{route('reports.destroy', $report->id)}}" method="POST">
+                        @method('delete')
+                        @csrf
+                        <p>Номер авто:{{ $report->number}}</p>
+                        <p>Описание нарушения:{{ $report->description}}</p>
+                        <input type="submit" value="Удалить">
+                    </form>
+                </div>
+                @csrf
+            </a>
             @endforeach 
         
             

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/app.css">
     <title>Создание заявления</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
         </div>
     </header>
     <main>   
-    <form action="{{ route('reports.store') }}" method="POST">
+    <form action="{{route('reports.store')}}" method="POST" className="flex flex-column">
         @csrf    
         <input type="text" name="number" placeholder="Номер авто" required>
         <textarea name="description" placeholder="Описание нарушения" required></textarea>

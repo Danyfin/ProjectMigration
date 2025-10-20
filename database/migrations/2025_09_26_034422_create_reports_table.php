@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('number')notNullValue();
+            $table->string('number');
             $table->text('description');
             $table->timestamps();
             $table->foreignId('user_id')

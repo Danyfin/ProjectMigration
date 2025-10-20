@@ -7,9 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reports', function (){
-    return view('report.index');
-})->name('reports.index');
 
 Route::get('/reports/create', function (){
     return view('report.create');
@@ -23,4 +20,4 @@ Route::post('/reports', [ReportController::class, 'store'])->name('reports.store
 
 Route::get('/reports/{report}/edit', [ReportController::class,'edit'])->name('reports.edit');
 
-Route::get('/reports/{report}', [ReportController::class,'update'])->name('reports.update');
+Route::put('/reports/{report}', [ReportController::class,'update'])->name('reports.update');
