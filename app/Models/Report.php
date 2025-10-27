@@ -14,11 +14,11 @@ class Report extends Model
 
     public function status():BelongsTo
     {
-        return $this->belongTo(Status::class);
+        return $this->belongsTo(Status::class);
     }
     public function user(): BelongsTo
     {
-        return $this->belongTo(User::class);
+        return $this->belongsTo(User::class);
     }
     
 }
