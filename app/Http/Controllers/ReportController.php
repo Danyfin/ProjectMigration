@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
     public function index(Request $request){
+        $sort = $request->input('sort');
+        if($sort != 'asc' && $sort != 'desc'){
+            $sort = 'desc';
+        }
 
         $status = $request->input('status');
         $validate = $request->validate([
@@ -16,10 +20,14 @@ class ReportController extends Controller
         ]);
         if($validate){
             $reports = Report::where('status_id', $status)
+            ->orderBy('created_at', $sort)
                 ->paginate(2);
         } else {
-            $reports = Report::paginate(2);
+            $reports = Report::orderBy('created_at', $sort)
+            ->paginate(2);
         }
+        $statuses = Status::all();
+        return view('report.index', compact('status' , 'reports', 'statuses', 'sort'));
 
     }
 

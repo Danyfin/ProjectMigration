@@ -24,15 +24,15 @@
         </a>    
         <div class="">
             <span>Сортироввка по дате создания:</span>
-            <a href="{{route('reports.index', ['sort' => 'desc'])}}">сначала новые</a>
-            <a href="{{route('reports.index', ['sort' => 'asc'])}}">сначала старые</a>
+            <a href="{{route('reports.index', ['sort' => 'desc', 'status' => $status])}}">сначала новые</a>
+            <a href="{{route('reports.index', ['sort' => 'asc', 'status' => $status])}}">сначала старые</a>
         </div>
         <div class="">
             <p>Фильтрация по статусу заявки</p>
             <ul>
                 @foreach($statuses as $status)
                 <li>
-                    <a href="{{route('reports.index', ['status' => $status->id])}}">
+                    <a href="{{route('reports.index', ['sort' => $sort, 'status' => $status->id])}}">
                         {{$status->name}}
                     </a>
                 </li>
