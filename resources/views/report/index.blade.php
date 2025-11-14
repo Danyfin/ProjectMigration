@@ -10,6 +10,7 @@
     <title>Заявления</title>
 </head>
 <body>
+    <x-app-layout>
     <header>
         <div class="header">
             <h1 class="logo">НАРУШЕНИЙ<span>.НЕТ</span></h1>
@@ -18,6 +19,7 @@
             </div>
         </div>
     </header>
+
     <main>
         <a href="/reports/create" class="create-report">
             Создать заявление
@@ -56,10 +58,8 @@
                 @csrf
             @endforeach 
             {{ $reports->links() }}
-            
-        
-            
         </div>
+</x-app-layout>
 
     </main>
 

@@ -18,6 +18,7 @@ class ReportController extends Controller
         $validate = $request->validate([
             'status' => "exists:statuses,id"
         ]);
+        
         if($validate){
             $reports = Report::where('status_id', $status)
             ->orderBy('created_at', $sort)
@@ -56,6 +57,9 @@ class ReportController extends Controller
             "number" => "string",
             "description" => "string",
         ]);
+
+        $data['user_id'] = Auth::user()->id;
+        $data['status_id'] = 1;
 
         $report->update($data);
         return redirect()->route('report.index');

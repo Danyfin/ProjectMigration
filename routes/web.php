@@ -18,20 +18,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-//Report
-Route::get('/reports', [ReportController::class,'index'])->name('reports.index');
+    //Report
+    Route::get('/reports', [ReportController::class,'index'])->name('reports.index');
 
-Route::get('/reports/create', function (){
-    return view('report.create');
-})->name('reports.create');
+    Route::get('/reports/create', function (){
+        return view('report.create');
+    })->name('reports.create');
 
-Route::delete('/reports/{report}', [ReportController::class,'destroy'])->name('reports.destroy');
+    Route::delete('/reports/{report}', [ReportController::class,'destroy'])->name('reports.destroy');
 
-Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
+    Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
 
-Route::get('/reports/{report}/edit', [ReportController::class,'edit'])->name('reports.edit');
+    Route::get('/reports/{report}/edit', [ReportController::class,'edit'])->name('reports.edit');
 
-Route::put('/reports/{report}', [ReportController::class,'update'])->name('reports.update');
+    Route::put('/reports/{report}', [ReportController::class,'update'])->name('reports.update');
 
 
 });
