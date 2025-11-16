@@ -10,7 +10,7 @@
     <title>Заявления</title>
 </head>
 <body>
-    <x-app-layout>
+     <x-app-layout>
     <header>
         <div class="header">
             <h1 class="logo">НАРУШЕНИЙ<span>.НЕТ</span></h1>
@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <main>
+    <main >
         <a href="/reports/create" class="create-report">
             Создать заявление
         </a>    
@@ -41,7 +41,7 @@
                 @endforeach
             </ul>
         </div>
-        <div class="cards">
+        <div class="cards" >
             @foreach ($reports as $report)
                 <div class="card" style="border: 1px solid black; border-radius: 10px; padding: 5px; width: 300px; ">
                     <form action="{{route('reports.destroy', $report->id)}}" method="POST">
@@ -52,17 +52,16 @@
                         <p>{{$report->created_at}}</p>
                         <p>{{$report->status->name}}</p>
                         <input type="submit" value="Удалить">
-                        <a href="{{ route('reports.edit', $report->id) }}">Редактировать</a>
+                        <a href="{{ route('reports.edit', $report) }}">Редактировать</a>
                     </form>
                 </div>
                 @csrf
             @endforeach 
             {{ $reports->links() }}
         </div>
-</x-app-layout>
 
     </main>
-
+</x-app-layout>
     
 </body>
 </html>

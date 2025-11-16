@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Status;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -21,11 +22,13 @@ class ReportController extends Controller
         
         if($validate){
             $reports = Report::where('status_id', $status)
+            ->where('user_id', Auth::user()->id)
             ->orderBy('created_at', $sort)
-                ->paginate(2);
+                ->paginate(4);
         } else {
-            $reports = Report::orderBy('created_at', $sort)
-            ->paginate(2);
+            $reports = Report::where('user_id', Auth::user()->id)
+            ->orderBy('created_at', $sort)
+            ->paginate(4);
         }
         $statuses = Status::all();
         return view('report.index', compact('status' , 'reports', 'statuses', 'sort'));
@@ -33,8 +36,12 @@ class ReportController extends Controller
     }
 
     public function destroy(Report $report){
-        $report->delete();
-        return redirect()->back();
+        if (Auth::user()->id === $report->user_id){
+            $report->delete();
+            return redirect()->back();
+        } else {
+            abort(403, 'У вас нет прав на удаление этой записи.');
+        }
     }
 
     public function store(Request $request, Report $report){
@@ -43,13 +50,22 @@ class ReportController extends Controller
             "description" => "string",
         ]);
 
+        $data['user_id'] = Auth::user()->id;
+        $data['status_id'] = 1;
+
         $report->create($data);
-        return redirect()->back();
+        return redirect()->route('reports.index');
+
     }
 
     public function edit(Report $report)
     {
-        return view('report.edit',compact('report'));
+        if (Auth::user()->id === $report->user_id){
+            return view('report.edit',compact('report'));
+        }
+        else{
+            abort(403, 'У вас нет прав на редактирование этой записи.');
+        }
     }
     
     public function update(Request $request, Report $report){
@@ -58,11 +74,8 @@ class ReportController extends Controller
             "description" => "string",
         ]);
 
-        $data['user_id'] = Auth::user()->id;
-        $data['status_id'] = 1;
-
         $report->update($data);
-        return redirect()->route('report.index');
+        return redirect()->route('reports.index');
     }
 
 }
