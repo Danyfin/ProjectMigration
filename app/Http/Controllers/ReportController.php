@@ -74,6 +74,9 @@ class ReportController extends Controller
             "description" => "string",
         ]);
 
+        $data['user_id'] = Auth::user()->id;
+        $data['status_id'] = 1;
+
         $report->update($data);
         return redirect()->route('reports.index');
     }
