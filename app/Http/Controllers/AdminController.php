@@ -11,6 +11,8 @@ class AdminController extends Controller
 {
     public function index(Request $request){
 
+
+
         $sort = $request->input('sort');
         if($sort != 'asc' && $sort != 'desc'){
             $sort = 'desc';
@@ -21,15 +23,7 @@ class AdminController extends Controller
             'status' => "exists:statuses,id"
         ]);
         
-        if($validate){
-            $reports = Report::where('status_id', $status)
-            ->orderBy('created_at', $sort)
-                ->paginate(8);
-        } else {
-            $reports = Report::where('user_id',)
-            ->orderBy('created_at', $sort)
-            ->paginate(8);
-        }
+        $reports = Report::all();
         $statuses = Status::all();
         return view('admin.index', compact('status' , 'reports', 'statuses', 'sort'));
 

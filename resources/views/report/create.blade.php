@@ -21,8 +21,8 @@
             </div>
         </div>
     </header>
-    <main>   
-    <form className="flex flex-col" action="{{route('reports.store')}}" method="POST" >
+    <main class="flex items-center justify-center">   
+    <form class="flex flex-col max-w-2xl w-full" action="{{route('reports.store')}}" method="POST" >
         @csrf    
         <input type="text" name="number" placeholder="Номер авто" required>
         <textarea name="description" placeholder="Описание нарушения" required></textarea>
