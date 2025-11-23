@@ -17,7 +17,9 @@
                     <td class="max-w-lg">{{$report->description}}</td>
                     <td class="">{{$report->number}}</td>
                     <td>
-                        <form action="">
+                        <form class="status-form" action="{{ route('reports.status.update', $report->id )}}" method="POST">
+                            @method('patch')
+                            @csrf
                             <select name="status_id" id="status_id">
                                 @foreach (@$statuses as $status)
                                 <option value="{{$status->id}}" {{$status->id === $report->status_id ? 'selected' : ''}}>
@@ -25,7 +27,7 @@
                                 </option>
                                 @endforeach
                             </select>
-                    </form>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
