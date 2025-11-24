@@ -21,7 +21,7 @@
                             @method('patch')
                             @csrf
                             <select name="status_id" id="status_id">
-                                @foreach (@$statuses as $status)
+                                @foreach ($statuses as $status)
                                 <option value="{{$status->id}}" {{$status->id === $report->status_id ? 'selected' : ''}}>
                                     {{$status->name}}
                                 </option>
