@@ -12,12 +12,7 @@
 <body>
      <x-app-layout>
     <header>
-        <div class="header">
-            <h1 class="logo">НАРУШЕНИЙ<span>.НЕТ</span></h1>
-            <div class="account">
-                <p class="name"></p>
-            </div>
-        </div>
+        
     </header>
 
     <main >
